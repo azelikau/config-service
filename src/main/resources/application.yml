@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:azelikau/configurations.git
+          clone-on-start: true
+          searchPaths: '{application}'
+          default-label: main
+          host-key: ${GIT_HOST_KEY}
+          host-key-algorithm: ssh-rsa
+          ignore-local-ssh-settings: true
+          private-key: ${GIT_PRIVATE_KEY}
