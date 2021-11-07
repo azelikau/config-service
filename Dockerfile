@@ -8,10 +8,6 @@ WORKDIR ${WORKING_DIRECTORY}
 RUN mvn clean package
 
 FROM openjdk:11.0.8-jre-slim
-ARG GIT_HOST_KEY_ARG
-ARG GIT_PRIVATE_KEY_ARG
-ENV GIT_HOST_KEY=$GIT_HOST_KEY_ARG
-ENV GIT_PRIVATE_KEY=$GIT_PRIVATE_KEY_ARG
 ARG WORKING_DIRECTORY=/workspace
 COPY --from=builder ${WORKING_DIRECTORY}/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
